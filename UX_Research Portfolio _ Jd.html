@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research Portfolio | Julia (Pengyue) Dou</title>
+  <style>
+    :root {
+      --primary: #2c6e6a;
+      --primary-light: #e8f4f3;
+      --accent: #e07b54;
+      --text: #1a1a2e;
+      --text-muted: #5a5a72;
+      --border: #d8e4e3;
+      --bg: #fafcfc;
+      --card-bg: #ffffff;
+      --tag-bg: #e8f4f3;
+      --tag-text: #1e5654;
+      --step-bg: #f4f9f9;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: var(--primary);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav a { color: #fff; text-decoration: none; font-family: sans-serif; font-size: 0.9rem; }
+    nav .name { font-size: 1rem; font-weight: 600; }
+    nav .links { display: flex; gap: 1.5rem; }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a4a47 100%);
+      color: #fff;
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+    .hero h1 { font-size: 2rem; font-weight: normal; margin-bottom: 0.75rem; }
+    .hero p { font-size: 1.05rem; opacity: 0.88; max-width: 680px; margin: 0 auto 1.5rem; font-family: sans-serif; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+    .hero-tags span {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      font-family: sans-serif;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+    }
+
+    /* ── Layout ── */
+    .container { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; }
+    .section-label {
+      font-family: sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 0.4rem;
+    }
+    h2 { font-size: 1.6rem; font-weight: normal; margin-bottom: 0.5rem; color: var(--text); }
+    h3 { font-size: 1.15rem; margin: 1.75rem 0 0.5rem; color: var(--text); }
+    p { margin-bottom: 1rem; color: var(--text); }
+
+    /* ── Project Card ── */
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .tag {
+      font-family: sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+    }
+    .tag.accent { background: #fdeee8; color: #8b3a1e; }
+    .tag.neutral { background: #f0f0f5; color: #3a3a5c; }
+
+    /* ── Process Steps ── */
+    .steps { display: flex; flex-direction: column; gap: 1rem; margin: 1.25rem 0; }
+    .step {
+      display: flex;
+      gap: 1rem;
+      background: var(--step-bg);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      border-left: 3px solid var(--primary);
+    }
+    .step-num {
+      font-family: sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      min-width: 24px;
+      padding-top: 2px;
+    }
+    .step-content { flex: 1; }
+    .step-content strong { display: block; font-family: sans-serif; font-size: 0.9rem; color: var(--text); margin-bottom: 0.25rem; }
+    .step-content p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
+
+    /* ── Findings ── */
+    .findings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+    .finding {
+      background: var(--primary-light);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+    }
+    .finding .finding-num {
+      font-family: sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .finding p { font-size: 0.88rem; margin: 0; }
+
+    /* ── Domain Table ── */
+    .domain-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-family: sans-serif; font-size: 0.85rem; }
+    .domain-table th {
+      background: var(--primary);
+      color: #fff;
+      text-align: left;
+      padding: 0.6rem 1rem;
+      font-weight: 600;
+    }
+    .domain-table td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .domain-table tr:nth-child(even) td { background: #f6fafa; }
+    .domain-table tr:last-child td { border-bottom: none; }
+    .arrow { color: var(--accent); font-weight: bold; }
+
+    /* ── Skills Table ── */
+    .skills-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-family: sans-serif; font-size: 0.85rem; }
+    .skills-table th {
+      background: #f0f0f5;
+      color: var(--text);
+      text-align: left;
+      padding: 0.5rem 1rem;
+      font-weight: 600;
+    }
+    .skills-table td { padding: 0.55rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .skills-table tr:last-child td { border-bottom: none; }
+
+    /* ── Aims ── */
+    .aim-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .aim-label {
+      font-family: sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .aim-card h4 { font-size: 1rem; margin-bottom: 0.5rem; }
+    .aim-card p { font-size: 0.88rem; color: var(--text-muted); margin: 0; }
+    .method-badge {
+      display: inline-block;
+      font-family: sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: #fdeee8;
+      color: #8b3a1e;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      margin-top: 0.5rem;
+    }
+
+    /* ── Quote callout ── */
+    blockquote {
+      border-left: 3px solid var(--accent);
+      margin: 1.25rem 0;
+      padding: 0.75rem 1.25rem;
+      background: #fdf7f5;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+    blockquote cite {
+      display: block;
+      margin-top: 0.4rem;
+      font-style: normal;
+      font-size: 0.78rem;
+      color: #8b8ba0;
+    }
+
+    /* ── Status badge ── */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+    .status-badge.submitted { background: #e8f4e8; color: #1a5c1a; }
+    .status-badge.inprogress { background: #fff4e0; color: #7a4a00; }
+    .status-badge.completed { background: #e8f4f3; color: var(--primary); }
+    .dot { width: 7px; height: 7px; border-radius: 50%; }
+    .dot.green { background: #2a8a2a; }
+    .dot.orange { background: #e07b00; }
+    .dot.teal { background: var(--primary); }
+
+    /* ── Visual note ── */
+    .visual-note {
+      background: #f9f5ff;
+      border: 1px dashed #c4aee8;
+      border-radius: 8px;
+      padding: 0.85rem 1.25rem;
+      font-family: sans-serif;
+      font-size: 0.82rem;
+      color: #5a3a8a;
+      margin-top: 1.5rem;
+    }
+    .visual-note strong { display: block; margin-bottom: 0.3rem; }
+
+    /* ── Divider ── */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--primary);
+      color: rgba(255,255,255,0.8);
+      text-align: center;
+      font-family: sans-serif;
+      font-size: 0.85rem;
+      padding: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      .findings-grid { grid-template-columns: 1fr; }
+      nav .links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <a class="name" href="#">Julia (Pengyue) Dou</a>
+  <div class="links">
+    <a href="#">Home</a>
+    <a href="#">Research</a>
+    <a href="mailto:PED44@pitt.edu">Contact</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <h1>Translating Public Health Research into UX Research Practice</h1>
+  <p>Mixed-methods health researcher specializing in social media content analysis, behavioral theory-grounded qualitative research, and evidence-based insight synthesis across health conditions, platforms, and populations.</p>
+  <div class="hero-tags">
+    <span>Mixed Methods Research</span>
+    <span>Social Media Content Analysis</span>
+    <span>Behavioral Science</span>
+    <span>Research Design</span>
+    <span>Health Communication</span>
+    <span>Cross-disciplinary Collaboration</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div style="padding:2rem 0 1rem;border-bottom:1px solid #e5e7eb;margin-bottom:2.5rem;">
+    <p style="font-size:1.05rem;line-height:1.75;color:#374151;max-width:720px;">The projects below show how I apply the core skills of UX research — defining research questions, designing systematic methods, synthesizing findings into actionable insights, and communicating results to cross-functional stakeholders — in the context of public health. Two case studies walk through my process end-to-end; my dissertation at the end demonstrates how these methods scale into a multi-study research program.</p>
+  </div>
+
+  <!-- ────────────────────────────────────────────────
+       CASE STUDY 1: ORGAN DONATION
+  ──────────────────────────────────────────────── -->
+  <div class="section-label">Case Study</div>
+  <h2>Viewer Reactions to Organ Donation on <em>The Pitt</em>: A Reddit Content Analysis</h2>
+
+  <div class="project-card">
+    <div class="project-meta">
+      <span class="tag">Co-First Author</span>
+      <span class="tag">Mixed Methods</span>
+      <span class="tag">Social Media Content Analysis</span>
+      <span class="tag accent">R · Stata 19 · Excel</span>
+    </div>
+
+    <h3>Background &amp; Research Question</h3>
+    <p><em>The Pitt</em> (HBO, 2025) featured a medically accurate organ donation storyline developed in consultation with the Center for Organ Recovery &amp; Education (CORE). Prior survey research showed that viewers were more likely to seek out (26.9% vs. 9.2%) and share (17.2% vs. 5.3%) organ donation information compared to non-viewers, but did not tell us <strong>what</strong> viewers were actually discussing or how they interpreted the storyline.</p>
+    <p><strong>Research question:</strong> How did Reddit viewers engage with the organ donation storyline: what did they say, what patterns emerged, and what does this mean for health communicators and organ procurement organizations (OPOs)?</p>
+
+    <h3>Why This Design?</h3>
+    <p><strong>Why Reddit?</strong> 83% of TV viewers use a second screen while watching; Reddit is where this real-time discussion happens. r/ThePittTVShow offered a naturalistic, publicly accessible window into unfiltered viewer reactions. Reddit's threaded format allows for richer peer exchange than platforms like Twitter.</p>
+    <p><strong>Why mixed methods?</strong> Quantitative analysis alone tells us <em>how often</em> themes appeared, but not <em>why</em> they resonated. A mixed-methods design let us move from frequency patterns to human meaning, translating numbers into actionable insight for health communicators.</p>
+
+    <h3>Research Process</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <strong>Data Collection</strong>
+          <p>Searched r/ThePittTVShow using organ donation-related keywords. Extracted 4,579 posts and comments using the R package RedditExtractoR. Set a September 15, 2025 cutoff to capture pre-Emmy audience composition before a viewership surge altered the community dynamics.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <strong>Theory-Informed Codebook Development</strong>
+          <p>Built initial codes through a multidisciplinary team process combining epidemiology, behavioral science, entertainment education theory (E-ELM, Cultivation Theory, SCT), and organ procurement practice. Codes captured emotional engagement, perceived realism, identification, self-efficacy, and post purpose.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <strong>Calibration &amp; Inter-Rater Reliability</strong>
+          <p>6 human coders worked in 3 pairs, independently double-coding all posts. After each calibration round (n=1,200 posts), calculated <strong>Cohen's κ</strong> per code category, adjudicated disagreements, and refined codebook definitions. Repeated until <strong>κ ≥ 0.70</strong> was achieved (the accepted threshold for reliable qualitative coding).</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <strong>Quantitative Analysis</strong>
+          <p>Descriptive statistics and cross-tabulations across 332 relevant posts (from 4,579 total). Used Stata 19 for all quantitative analyses to identify code co-occurrence patterns (e.g., do healthcare provider posts behave differently from general viewer posts?).</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <strong>Qualitative Deep Dive</strong>
+          <p>Purposively selected posts representing dominant co-occurrence patterns for theory-guided in-depth review. Moved from "what percentage" to "what does this mean for the people writing these posts?", contextualizing numbers with human narrative.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Key Findings</h3>
+    <div class="findings-grid">
+      <div class="finding">
+        <div class="finding-num">Finding 01</div>
+        <p><strong>Personal connection and emotional engagement drove the conversation.</strong> Most frequent themes: personal connection to donation (34.0%) and emotional engagement (29.2%), which heavily co-occurred, with responses shaped by viewers' own lived experiences with loss or transplant.</p>
+      </div>
+      <div class="finding">
+        <div class="finding-num">Finding 02</div>
+        <p><strong>Healthcare providers served as credibility anchors.</strong> Only 9% of posts, but 66.7% also included a personal connection to donation, and providers were twice as likely to discuss storyline realism (20.0% vs. 7.8% overall). They translated storyline content into factual health information.</p>
+      </div>
+      <div class="finding">
+        <div class="finding-num">Finding 03</div>
+        <p><strong>Lived experience shapes perceived realism.</strong> Posts from viewers with personal connections were more likely to evaluate the storyline as realistic (15.9% vs. 7.8%). Accurate portrayals affirm lived experiences and build trust, which is critical for health communication.</p>
+      </div>
+      <div class="finding">
+        <div class="finding-num">Finding 04</div>
+        <p><strong>Trauma surfaces in entertainment spaces.</strong> Trauma-related content was disproportionately present in emotionally engaged (16.5%) and personally connected posts (13.3%), versus 7.8% overall. Fan communities function as informal peer support spaces for processing health-related loss.</p>
+      </div>
+    </div>
+
+    <blockquote>
+      "I work at an OPO, and [The Pitt storyline] is the most accurate portrayal of the process I've ever seen."
+      <cite>Healthcare provider, r/ThePittTVShow</cite>
+    </blockquote>
+    <blockquote>
+      "There is something really touching about bleary-eyed healthcare workers standing outside their stations, rooms, and departments for an honor walk."
+      <cite>Viewer with personal connection, r/ThePittTVShow</cite>
+    </blockquote>
+
+    <h3>Implications for Stakeholders</h3>
+    <p>For OPOs and health communicators: realistic entertainment portrayals can prompt emotional reflection and peer knowledge exchange without direct messaging campaigns. Healthcare providers are a key intermediary audience. Fan communities like Reddit may be an underutilized channel for organic donor education and registration prompts. Trauma-informed communication strategies are needed when engaging audiences around donation.</p>
+
+    <hr class="divider" />
+
+    <h3>Skills Demonstrated</h3>
+    <table class="skills-table">
+      <tr><th>Skill</th><th>How It Shows Up</th></tr>
+      <tr><td>End-to-end research design</td><td>Designed data collection, codebook, analysis plan, and synthesis strategy from scratch</td></tr>
+      <tr><td>Social media data collection</td><td>R-based extraction from Reddit at scale (4,579 posts)</td></tr>
+      <tr><td>Systematic codebook development</td><td>Theory-informed, multi-round calibration, multidisciplinary team</td></tr>
+      <tr><td>Inter-rater reliability</td><td>Cohen's κ workflow with iterative adjudication across 6 coders</td></tr>
+      <tr><td>Mixed-methods analysis</td><td>Quantitative (descriptive stats, cross-tabs) + qualitative (theory-guided)</td></tr>
+      <tr><td>Synthesis into recommendations</td><td>Findings translated into actionable implications for OPOs, clinicians, and researchers</td></tr>
+    </table>
+
+    <div style="margin-top:1.5rem;overflow-x:auto;">
+      <svg viewBox="0 0 820 300" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" style="width:100%;max-width:820px;display:block;margin:0 auto;">
+        <title>Research Process: Organ Donation Reddit Content Analysis</title>
+        <defs><marker id="arr1" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#2c6e6a"/></marker></defs>
+        <rect width="820" height="300" fill="#fafcfc"/>
+        <text x="410" y="26" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a2e">Research Process</text>
+        <!-- Step 1 -->
+        <rect x="20" y="44" width="130" height="210" rx="8" fill="#e8f4f3" stroke="#2c6e6a" stroke-width="1.5"/>
+        <rect x="20" y="44" width="130" height="30" rx="8" fill="#2c6e6a"/><rect x="20" y="62" width="130" height="12" fill="#2c6e6a"/>
+        <text x="85" y="62" text-anchor="middle" font-size="9" font-weight="bold" fill="white">01  DATA COLLECTION</text>
+        <text x="85" y="92" text-anchor="middle" font-size="8.5" fill="#1a3a38">Keyword search on</text>
+        <text x="85" y="105" text-anchor="middle" font-size="8.5" fill="#1a3a38">r/ThePittTVShow</text>
+        <line x1="40" y1="120" x2="130" y2="120" stroke="#2c6e6a" stroke-width="0.5" opacity="0.35"/>
+        <text x="85" y="136" text-anchor="middle" font-size="8" fill="#2c6e6a" font-weight="bold">Tool</text>
+        <text x="85" y="149" text-anchor="middle" font-size="8" fill="#1a3a38">RedditExtractoR (R)</text>
+        <line x1="40" y1="162" x2="130" y2="162" stroke="#2c6e6a" stroke-width="0.5" opacity="0.35"/>
+        <text x="85" y="178" text-anchor="middle" font-size="8" fill="#2c6e6a" font-weight="bold">Output</text>
+        <text x="85" y="191" text-anchor="middle" font-size="8" fill="#1a3a38">4,579 posts extracted</text>
+        <line x1="152" y1="150" x2="164" y2="150" stroke="#2c6e6a" stroke-width="1.5" marker-end="url(#arr1)"/>
+        <!-- Step 2 -->
+        <rect x="168" y="44" width="130" height="210" rx="8" fill="#e8f4f3" stroke="#2c6e6a" stroke-width="1.5"/>
+        <rect x="168" y="44" width="130" height="30" rx="8" fill="#2c6e6a"/><rect x="168" y="62" width="130" height="12" fill="#2c6e6a"/>
+        <text x="233" y="62" text-anchor="middle" font-size="9" font-weight="bold" fill="white">02  CODEBOOK DEV.</text>
+        <text x="233" y="92" text-anchor="middle" font-size="8.5" fill="#1a3a38">Multidisciplinary team</text>
+        <text x="233" y="105" text-anchor="middle" font-size="8.5" fill="#1a3a38">process</text>
+        <line x1="188" y1="120" x2="278" y2="120" stroke="#2c6e6a" stroke-width="0.5" opacity="0.35"/>
+        <text x="233" y="136" text-anchor="middle" font-size="8" fill="#2c6e6a" font-weight="bold">Framework</text>
+        <text x="233" y="149" text-anchor="middle" font-size="8" fill="#1a3a38">Entertainment</text>
+        <text x="233" y="162" text-anchor="middle" font-size="8" fill="#1a3a38">Education (E-ELM)</text>
+        <line x1="188" y1="175" x2="278" y2="175" stroke="#2c6e6a" stroke-width="0.5" opacity="0.35"/>
+        <text x="233" y="191" text-anchor="middle" font-size="8" fill="#2c6e6a" font-weight="bold">Output</text>
+        <text x="233" y="204" text-anchor="middle" font-size="8" fill="#1a3a38">Theory-based codebook</text>
+        <line x1="300" y1="150" x2="312" y2="150" stroke="#2c6e6a" stroke-width="1.5" marker-end="url(#arr1)"/>
+        <!-- Step 3 -->
+        <rect x="316" y="44" width="130" height="210" rx="8" fill="#e8f4f3" stroke="#2c6e6a" stroke-width="1.5"/>
+        <rect x="316" y="44" width="130" height="30" rx="8" fill="#2c6e6a"/><rect x="316" y="62" width="130" height="12" fill="#2c6e6a"/>
+        <text x="381" y="62" text-anchor="middle" font-size="9" font-weight="bold" fill="white">03  CALIBRATION &amp; IRR</text>
+        <text x="381" y="92" text-anchor="middle" font-size="8.5" fill="#1a3a38">2 calibration rounds</text>
+        <text x="381" y="105" text-anchor="middle" font-size="8.5" fill="#1a3a38">(n=1,200 posts each)</text>
+        <line x1="336" y1="120" x2="426" y2="120" stroke="#2c6e6a" stroke-width="0.5" opacity="0.35"/>
+        <text x="381" y="136" text-anchor="middle" font-size="8" fill="#2c6e6a" font-weight="bold">Threshold</text>
+        <text x="381" y="152" text-anchor="middle" font-size="9.5" fill="#e07b54" font-weight="bold">Cohen's κ ≥ 0.70</text>
+        <line x1="336" y1="165" x2="426" y2="165" stroke="#2c6e6a" stroke-width="0.5" opacity="0.35"/>
+        <text x="381" y="181" text-anchor="middle" font-size="8" fill="#2c6e6a" font-weight="bold">Process</text>
+        <text x="381" y="194" text-anchor="middle" font-size="8" fill="#1a3a38">Adjudication +</text>
+        <text x="381" y="207" text-anchor="middle" font-size="8" fill="#1a3a38">codebook refinement</text>
+        <line x1="448" y1="150" x2="460" y2="150" stroke="#2c6e6a" stroke-width="1.5" marker-end="url(#arr1)"/>
+        <!-- Step 4 -->
+        <rect x="464" y="44" width="130" height="210" rx="8" fill="#e8f4f3" stroke="#2c6e6a" stroke-width="1.5"/>
+        <rect x="464" y="44" width="130" height="30" rx="8" fill="#2c6e6a"/><rect x="464" y="62" width="130" height="12" fill="#2c6e6a"/>
+        <text x="529" y="62" text-anchor="middle" font-size="9" font-weight="bold" fill="white">04  QUANT. ANALYSIS</text>
+        <text x="529" y="92" text-anchor="middle" font-size="8.5" fill="#1a3a38">332 relevant posts</text>
+        <text x="529" y="105" text-anchor="middle" font-size="8.5" fill="#1a3a38">(of 4,579 screened)</text>
+        <line x1="484" y1="120" x2="574" y2="120" stroke="#2c6e6a" stroke-width="0.5" opacity="0.35"/>
+        <text x="529" y="136" text-anchor="middle" font-size="8" fill="#2c6e6a" font-weight="bold">Tool</text>
+        <text x="529" y="149" text-anchor="middle" font-size="8" fill="#1a3a38">Stata 19</text>
+        <line x1="484" y1="162" x2="574" y2="162" stroke="#2c6e6a" stroke-width="0.5" opacity="0.35"/>
+        <text x="529" y="178" text-anchor="middle" font-size="8" fill="#2c6e6a" font-weight="bold">Output</text>
+        <text x="529" y="191" text-anchor="middle" font-size="8" fill="#1a3a38">Frequencies +</text>
+        <text x="529" y="204" text-anchor="middle" font-size="8" fill="#1a3a38">cross-tabulations</text>
+        <line x1="596" y1="150" x2="608" y2="150" stroke="#2c6e6a" stroke-width="1.5" marker-end="url(#arr1)"/>
+        <!-- Step 5 -->
+        <rect x="612" y="44" width="190" height="210" rx="8" fill="#fff4f0" stroke="#e07b54" stroke-width="1.5"/>
+        <rect x="612" y="44" width="190" height="30" rx="8" fill="#e07b54"/><rect x="612" y="62" width="190" height="12" fill="#e07b54"/>
+        <text x="707" y="62" text-anchor="middle" font-size="9" font-weight="bold" fill="white">05  QUALITATIVE ANALYSIS</text>
+        <text x="707" y="92" text-anchor="middle" font-size="8.5" fill="#3a1a0a">Purposive selection of</text>
+        <text x="707" y="105" text-anchor="middle" font-size="8.5" fill="#3a1a0a">dominant pattern posts</text>
+        <line x1="632" y1="120" x2="782" y2="120" stroke="#e07b54" stroke-width="0.5" opacity="0.35"/>
+        <text x="707" y="136" text-anchor="middle" font-size="8" fill="#e07b54" font-weight="bold">Approach</text>
+        <text x="707" y="149" text-anchor="middle" font-size="8" fill="#3a1a0a">Theory-guided</text>
+        <text x="707" y="162" text-anchor="middle" font-size="8" fill="#3a1a0a">contextual analysis</text>
+        <line x1="632" y1="175" x2="782" y2="175" stroke="#e07b54" stroke-width="0.5" opacity="0.35"/>
+        <text x="707" y="191" text-anchor="middle" font-size="8" fill="#e07b54" font-weight="bold">Output</text>
+        <text x="707" y="204" text-anchor="middle" font-size="8" fill="#3a1a0a">Narrative depth</text>
+        <text x="707" y="217" text-anchor="middle" font-size="8" fill="#3a1a0a">behind the numbers</text>
+        <!-- Legend -->
+        <rect x="240" y="272" width="10" height="10" rx="2" fill="#2c6e6a"/>
+        <text x="256" y="281" font-size="8.5" fill="#5a5a72">Quantitative phases</text>
+        <rect x="380" y="272" width="10" height="10" rx="2" fill="#e07b54"/>
+        <text x="396" y="281" font-size="8.5" fill="#5a5a72">Qualitative phase</text>
+      </svg>
+    </div>
+  </div>
+
+
+  <!-- ────────────────────────────────────────────────
+       CASE STUDY 2: VIP
+  ──────────────────────────────────────────────── -->
+  <div class="section-label">Case Study</div>
+  <h2>Youth-Inclusive Social Media Coding for Emerging Nicotine and Tobacco Products: A Vertically Integrated Project Study</h2>
+
+  <div class="project-card">
+    <div class="project-meta">
+      <span class="tag">Lead Researcher</span>
+      <span class="tag">Mixed Methods</span>
+      <span class="tag">Session Facilitation</span>
+      <span class="tag accent">Stata 19 · Dedoose</span>
+    </div>
+
+    <h3>Background &amp; Research Question</h3>
+    <p>Analyzing youth-oriented social media content through a purely adult research lens introduces interpretive bias. When coding decisions rely solely on adult researchers' perspectives, there is a real risk of misreading the language, aesthetics, and humor of youth culture. This study asked: can a cross-generational research team produce stronger, more contextually valid analysis than a traditional homogeneous team?</p>
+    <p>We applied a Vertically Integrated Project (VIP) model — originally developed for university research — to the analysis of 300 YouTube Shorts featuring #Zyn, engaging high school students, undergraduate students, and faculty as co-researchers in parallel.</p>
+
+    <h3>Why This Design?</h3>
+    <p><strong>Why YouTube Shorts?</strong> While TikTok dominates research attention, a 2024 Pew survey found YouTube was used daily by 70% of U.S. adolescents ages 13–17, compared to 57% for TikTok. The platform represented a significant gap in the literature.</p>
+    <p><strong>Why mixed methods?</strong> Quantitative inter-rater reliability (IRR) metrics tell us where coders disagreed, but not why. A team debriefing session provided the qualitative depth to interpret those disagreements and reframe them as methodological insight rather than failure.</p>
+
+    <h3>Research Process</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <strong>Data Collection</strong>
+          <p>Manually extracted 300 YouTube Shorts containing #Zyn on September 18, 2024. A separate practice set of 100 videos was extracted earlier for coder training.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <strong>Cross-generational Team Assembly</strong>
+          <p>Assembled three parallel coding teams: two high school students from the MYTH Youth Collaborative (a youth participatory action research program), two undergraduate public health students with 2–3 years of prior coding experience, and two faculty members with over a decade of social media research experience.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <strong>Codebook Adaptation &amp; Training</strong>
+          <p>Adapted an existing codebook from prior e-cigarette social media research. Conducted structured training using the 100-video practice set, followed by full-team calibration to build shared understanding before main coding began.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <strong>6 Iterative Coding Rounds</strong>
+          <p>Each team independently double-coded the same 50 videos per round across six rounds (N=300 total). After each round, IRR was calculated within teams using Cohen's κ and percent agreement in Stata 19, followed by adjudication of disagreements.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <strong>Team Debriefing Session</strong>
+          <p>Facilitated a 90-minute semi-structured Zoom session with all coders across age groups. Participants reflected on coding challenges, interpretive disagreements, and collaborative dynamics. Session was audio-recorded and transcribed verbatim.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">06</div>
+        <div class="step-content">
+          <strong>Thematic Analysis</strong>
+          <p>Analyzed the debriefing transcript in Dedoose 10.34 using a deductive-inductive approach: deductive anchors were drawn from codes with consistently lower IRR; inductive coding captured emergent themes about age-based perspectives and cross-team learning.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Key Findings</h3>
+    <div class="findings-grid">
+      <div class="finding">
+        <div class="finding-num">Finding 01</div>
+        <p><strong>Experience level shaped reliability trajectories differently.</strong> The undergraduate team achieved the highest IRR in the final round (κ: 0.40–0.63). The high school team showed the steepest learning curve, with steady improvement across rounds. Faculty maintained stable, consistent reliability throughout.</p>
+      </div>
+      <div class="finding">
+        <div class="finding-num">Finding 02</div>
+        <p><strong>Interpretive divergence reflected positionality, not error.</strong> Lower IRR on codes like "youth appeal" and "male stereotype" was explained by coders' different cultural backgrounds and lived experiences — not misapplication of the codebook. Age and identity shaped what coders saw as salient.</p>
+      </div>
+      <div class="finding">
+        <div class="finding-num">Finding 03</div>
+        <p><strong>High school coders brought irreplaceable contextual knowledge.</strong> As peers of the target audience, HS coders interpreted YouTube Shorts with platform-native fluency that more experienced coders lacked — revealing nuances invisible to adult researchers.</p>
+      </div>
+      <div class="finding">
+        <div class="finding-num">Finding 04</div>
+        <p><strong>Codebooks struggle with short-form video ambiguity.</strong> Coders across all teams noted the existing codebook could not capture the pace and contextual ambiguity of YouTube Shorts. Teams developed internal heuristics to manage uncertainty, suggesting the need for format-specific codebook design.</p>
+      </div>
+    </div>
+
+    <blockquote>
+      "I kept putting what I thought the other faculty would think... you start to think just like them. You don't think of the codebook."
+      <cite>Faculty coder, team debriefing session</cite>
+    </blockquote>
+    <blockquote>
+      "Our cultural differences really impacted how we saw it."
+      <cite>Undergraduate coder, team debriefing session</cite>
+    </blockquote>
+
+    <h3>Implications</h3>
+    <p>Rather than treating lower IRR as a failure, the VIP model reframes interpretive divergence as methodological signal: a window into how age, experience, and cultural background shape the meaning of digital content. For public health research and any field analyzing audience-specific content, integrating members of the target population as analytic partners produces more contextually valid findings.</p>
+
+    <hr class="divider" />
+
+    <h3>Skills Demonstrated</h3>
+    <table class="skills-table">
+      <tr><th>Skill</th><th>How It Shows Up</th></tr>
+      <tr><td>End-to-end research design</td><td>Lead researcher on conceptualization, methodology, data curation, formal analysis, and writing</td></tr>
+      <tr><td>Session facilitation</td><td>Facilitated 90-minute cross-generational Zoom debriefing with coders at three experience levels</td></tr>
+      <tr><td>Participant recruitment &amp; management</td><td>Coordinated high school, undergraduate, and faculty coding teams across six iterative rounds</td></tr>
+      <tr><td>Quantitative analysis</td><td>Cohen's κ and percent agreement across teams and rounds in Stata 19</td></tr>
+      <tr><td>Qualitative analysis</td><td>Deductive-inductive thematic analysis of debriefing transcript in Dedoose</td></tr>
+      <tr><td>Cross-disciplinary collaboration</td><td>Integrated perspectives from epidemiology, public health, and youth participatory action research</td></tr>
+      <tr><td>Methodological innovation</td><td>First application of the VIP model to social media content analysis in public health</td></tr>
+    </table>
+
+    <div style="margin-top:1.5rem;overflow-x:auto;">
+      <svg viewBox="0 0 820 300" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" style="width:100%;max-width:820px;display:block;margin:0 auto;">
+        <title>Research Process: VIP YouTube Shorts Study</title>
+        <defs><marker id="arr2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#2c6e6a"/></marker></defs>
+        <rect width="820" height="300" fill="#fafcfc"/>
+        <text x="410" y="26" text-anchor="middle" font-size="13" font-weight="bold" fill="#1a1a2e">Research Process</text>
+        <!-- Step 1 -->
+        <rect x="10" y="44" width="146" height="210" rx="8" fill="#e8f4f3" stroke="#2c6e6a" stroke-width="1.5"/>
+        <rect x="10" y="44" width="146" height="30" rx="8" fill="#2c6e6a"/><rect x="10" y="62" width="146" height="12" fill="#2c6e6a"/>
+        <text x="83" y="62" text-anchor="middle" font-size="9" font-weight="bold" fill="white">01  DATA COLLECTION</text>
+        <text x="83" y="92" text-anchor="middle" font-size="8.5" fill="#1a3a38">Manually extracted 300</text>
+        <text x="83" y="105" text-anchor="middle" font-size="8.5" fill="#1a3a38">YouTube Shorts (#Zyn)</text>
+        <line x1="30" y1="120" x2="136" y2="120" stroke="#2c6e6a" stroke-width="0.5" opacity="0.35"/>
+        <text x="83" y="136" text-anchor="middle" font-size="8" fill="#2c6e6a" font-weight="bold">Platform</text>
+        <text x="83" y="149" text-anchor="middle" font-size="8" fill="#1a3a38">YouTube Shorts</text>
+        <line x1="30" y1="162" x2="136" y2="162" stroke="#2c6e6a" stroke-width="0.5" opacity="0.35"/>
+        <text x="83" y="178" text-anchor="middle" font-size="8" fill="#2c6e6a" font-weight="bold">Training set</text>
+        <text x="83" y="191" text-anchor="middle" font-size="8" fill="#1a3a38">100 additional videos</text>
+        <line x1="158" y1="150" x2="170" y2="150" stroke="#2c6e6a" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <!-- Step 2 -->
+        <rect x="174" y="44" width="146" height="210" rx="8" fill="#e8f4f3" stroke="#2c6e6a" stroke-width="1.5"/>
+        <rect x="174" y="44" width="146" height="30" rx="8" fill="#2c6e6a"/><rect x="174" y="62" width="146" height="12" fill="#2c6e6a"/>
+        <text x="247" y="62" text-anchor="middle" font-size="9" font-weight="bold" fill="white">02  TEAM &amp; CODEBOOK</text>
+        <text x="247" y="92" text-anchor="middle" font-size="8.5" fill="#1a3a38">3 parallel teams:</text>
+        <text x="247" y="105" text-anchor="middle" font-size="8.5" fill="#1a3a38">HS · UG · Faculty</text>
+        <line x1="194" y1="120" x2="300" y2="120" stroke="#2c6e6a" stroke-width="0.5" opacity="0.35"/>
+        <text x="247" y="136" text-anchor="middle" font-size="8" fill="#2c6e6a" font-weight="bold">Codebook</text>
+        <text x="247" y="149" text-anchor="middle" font-size="8" fill="#1a3a38">Adapted from prior</text>
+        <text x="247" y="162" text-anchor="middle" font-size="8" fill="#1a3a38">e-cigarette research</text>
+        <line x1="194" y1="175" x2="300" y2="175" stroke="#2c6e6a" stroke-width="0.5" opacity="0.35"/>
+        <text x="247" y="191" text-anchor="middle" font-size="8" fill="#2c6e6a" font-weight="bold">Key constructs</text>
+        <text x="247" y="204" text-anchor="middle" font-size="8" fill="#1a3a38">Sentiment · Content type</text>
+        <text x="247" y="217" text-anchor="middle" font-size="8" fill="#1a3a38">Appeal to groups</text>
+        <line x1="322" y1="150" x2="334" y2="150" stroke="#2c6e6a" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <!-- Step 3 -->
+        <rect x="338" y="44" width="146" height="210" rx="8" fill="#e8f4f3" stroke="#2c6e6a" stroke-width="1.5"/>
+        <rect x="338" y="44" width="146" height="30" rx="8" fill="#2c6e6a"/><rect x="338" y="62" width="146" height="12" fill="#2c6e6a"/>
+        <text x="411" y="62" text-anchor="middle" font-size="9" font-weight="bold" fill="white">03  ITERATIVE CODING</text>
+        <text x="411" y="92" text-anchor="middle" font-size="8.5" fill="#1a3a38">6 rounds × 50 videos</text>
+        <text x="411" y="105" text-anchor="middle" font-size="8.5" fill="#1a3a38">double-coded within teams</text>
+        <line x1="358" y1="120" x2="464" y2="120" stroke="#2c6e6a" stroke-width="0.5" opacity="0.35"/>
+        <text x="411" y="136" text-anchor="middle" font-size="8" fill="#2c6e6a" font-weight="bold">IRR after each round</text>
+        <text x="411" y="152" text-anchor="middle" font-size="9" fill="#e07b54" font-weight="bold">Cohen's κ + % agreement</text>
+        <line x1="358" y1="165" x2="464" y2="165" stroke="#2c6e6a" stroke-width="0.5" opacity="0.35"/>
+        <text x="411" y="181" text-anchor="middle" font-size="8" fill="#2c6e6a" font-weight="bold">Tool</text>
+        <text x="411" y="194" text-anchor="middle" font-size="8" fill="#1a3a38">Stata 19</text>
+        <line x1="486" y1="150" x2="498" y2="150" stroke="#2c6e6a" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <!-- Step 4 -->
+        <rect x="502" y="44" width="146" height="210" rx="8" fill="#e8f4f3" stroke="#2c6e6a" stroke-width="1.5"/>
+        <rect x="502" y="44" width="146" height="30" rx="8" fill="#2c6e6a"/><rect x="502" y="62" width="146" height="12" fill="#2c6e6a"/>
+        <text x="575" y="62" text-anchor="middle" font-size="9" font-weight="bold" fill="white">04  TEAM DEBRIEFING</text>
+        <text x="575" y="92" text-anchor="middle" font-size="8.5" fill="#1a3a38">90-min semi-structured</text>
+        <text x="575" y="105" text-anchor="middle" font-size="8.5" fill="#1a3a38">Zoom session</text>
+        <line x1="522" y1="120" x2="628" y2="120" stroke="#2c6e6a" stroke-width="0.5" opacity="0.35"/>
+        <text x="575" y="136" text-anchor="middle" font-size="8" fill="#2c6e6a" font-weight="bold">Participants</text>
+        <text x="575" y="149" text-anchor="middle" font-size="8" fill="#1a3a38">All coders across</text>
+        <text x="575" y="162" text-anchor="middle" font-size="8" fill="#1a3a38">3 age groups</text>
+        <line x1="522" y1="175" x2="628" y2="175" stroke="#2c6e6a" stroke-width="0.5" opacity="0.35"/>
+        <text x="575" y="191" text-anchor="middle" font-size="8" fill="#2c6e6a" font-weight="bold">Facilitated by</text>
+        <text x="575" y="204" text-anchor="middle" font-size="8" fill="#1a3a38">Lead author (JPD)</text>
+        <line x1="650" y1="150" x2="662" y2="150" stroke="#2c6e6a" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <!-- Step 5 -->
+        <rect x="666" y="44" width="146" height="210" rx="8" fill="#fff4f0" stroke="#e07b54" stroke-width="1.5"/>
+        <rect x="666" y="44" width="146" height="30" rx="8" fill="#e07b54"/><rect x="666" y="62" width="146" height="12" fill="#e07b54"/>
+        <text x="739" y="62" text-anchor="middle" font-size="9" font-weight="bold" fill="white">05  THEMATIC ANALYSIS</text>
+        <text x="739" y="92" text-anchor="middle" font-size="8.5" fill="#3a1a0a">Debriefing transcript</text>
+        <text x="739" y="105" text-anchor="middle" font-size="8.5" fill="#3a1a0a">analyzed in Dedoose</text>
+        <line x1="686" y1="120" x2="792" y2="120" stroke="#e07b54" stroke-width="0.5" opacity="0.35"/>
+        <text x="739" y="136" text-anchor="middle" font-size="8" fill="#e07b54" font-weight="bold">Approach</text>
+        <text x="739" y="149" text-anchor="middle" font-size="8" fill="#3a1a0a">Deductive-inductive</text>
+        <line x1="686" y1="162" x2="792" y2="162" stroke="#e07b54" stroke-width="0.5" opacity="0.35"/>
+        <text x="739" y="178" text-anchor="middle" font-size="8" fill="#e07b54" font-weight="bold">Output</text>
+        <text x="739" y="191" text-anchor="middle" font-size="8" fill="#3a1a0a">Themes contextualizing</text>
+        <text x="739" y="204" text-anchor="middle" font-size="8" fill="#3a1a0a">IRR patterns</text>
+        <!-- Legend -->
+        <rect x="240" y="272" width="10" height="10" rx="2" fill="#2c6e6a"/>
+        <text x="256" y="281" font-size="8.5" fill="#5a5a72">Quantitative phases</text>
+        <rect x="380" y="272" width="10" height="10" rx="2" fill="#e07b54"/>
+        <text x="396" y="281" font-size="8.5" fill="#5a5a72">Qualitative phase</text>
+      </svg>
+    </div>
+  </div>
+
+
+  <!-- ────────────────────────────────────────────────
+       PROJECT 3: DISSERTATION
+  ──────────────────────────────────────────────── -->
+  <div class="section-label">Current Research</div>
+  <h2>PhD Dissertation: From Exposure to Interpretation — Social Media Narratives and Youth Susceptibility to Oral Nicotine Products</h2>
+
+  <div class="project-card">
+    <div class="status-badge inprogress"><span class="dot orange"></span> In Progress | Expected Defense April 2027</div>
+
+    <div class="project-meta">
+      <span class="tag">Principal Researcher</span>
+      <span class="tag">3-Paper Dissertation</span>
+      <span class="tag">NIH R01 Funded</span>
+      <span class="tag accent">Survey · Content Analysis · Focus Groups</span>
+    </div>
+
+    <p>My dissertation comprises three independent yet conceptually related mixed-methods studies examining how social media exposure to oral nicotine product (ONP) narratives shapes susceptibility and interpretation among young people, a high-priority vulnerable population. The research methods used across these three studies (survey secondary analysis, social media content analysis, and focus groups) are transferable across age groups and health domains.</p>
+
+    <h3>Research Design Logic</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">→</div>
+        <div class="step-content">
+          <strong>Paper 1 establishes what predicts susceptibility</strong>
+          <p>Quantitative survey data identifies which dimensions of social media use are most strongly associated with ONP susceptibility, informing what to look for in Papers 2 and 3.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">→</div>
+        <div class="step-content">
+          <strong>Paper 2 maps the narrative environment</strong>
+          <p>Content analysis reveals how Zyn is actually discussed on Reddit, the context that youth are exposed to. Findings inform focus group stimuli and probes in Paper 3.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">→</div>
+        <div class="step-content">
+          <strong>Paper 3 centers youth voice</strong>
+          <p>Focus groups let young people interpret and respond to the narratives identified in Papers 1 and 2, shifting from researcher-defined patterns to participant-generated meaning.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>Three Specific Aims</h3>
+
+    <div class="aim-card">
+      <div class="aim-label">Paper 1: Quantitative Analysis</div>
+      <h4>Predicting Youth Susceptibility to Oral Nicotine Products from Social Media Use</h4>
+      <p>Secondary analysis of NIH R01 survey data (N=706 adolescents ages 13–17, Ipsos KnowledgePanel nationally representative sample). Logistic regression models examining associations between social media use components (platform frequency, engagement behaviors, and perceived misinformation exposure) and intentions to initiate ONP use.</p>
+      <span class="method-badge">Logistic Regression · Survey Secondary Analysis · R</span>
+    </div>
+
+    <div class="aim-card">
+      <div class="aim-label">Paper 2: Social Media Content Analysis</div>
+      <h4>Mapping Youth-Centered Zyn Narratives on Reddit</h4>
+      <p>Content analysis of ~2,700 highly visible Reddit posts about Zyn. Hybrid deductive-inductive coding approach: theory-informed codes derived from existing frameworks, plus emergent codes grounded in the data. Double-coding with Cohen's κ ≥ 0.70 IRR threshold. Cross-tabulations to examine narrative co-occurrence and community distribution across subreddits.</p>
+      <span class="method-badge">Hybrid Coding · IRR · Cross-Tabulation · R</span>
+    </div>
+
+    <div class="aim-card">
+      <div class="aim-label">Paper 3: Qualitative / Participatory</div>
+      <h4>Youth Interpretation of ONP Social Media Narratives: Focus Groups</h4>
+      <p>6 focus groups with youth ages 13–24, conducted via Zoom. Semi-structured guide informed by Papers 1 and 2 findings; stimuli include actual social media content identified in Paper 2. Sessions audio-recorded, transcribed verbatim, imported into NVivo 15. Hybrid inductive-deductive thematic analysis allowing for both theory-informed coding and emergent youth perspectives.</p>
+      <span class="method-badge">Focus Groups · Thematic Analysis · NVivo 15 · Participant Recruitment · IRB Application</span>
+    </div>
+
+    <h3>Conceptual Frameworks</h3>
+    <p>The dissertation integrates three complementary frameworks: <strong>Cultivation Theory</strong> (how repeated media exposure shapes attitudes), the <strong>Extended Elaboration Likelihood Model (E-ELM)</strong> (how entertainment narratives reduce resistance to health messages), and <strong>Social Cognitive Theory</strong> (observational learning and self-efficacy from social media role models).</p>
+
+    <div style="margin-top:1.5rem;overflow-x:auto;">
+      <svg viewBox="0 0 760 420" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif" style="width:100%;max-width:760px;display:block;margin:0 auto;">
+        <title>Conceptual Framework</title>
+        <defs>
+          <marker id="arr-solid" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#3a3a5c"/></marker>
+          <marker id="arr-dash" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#3a3a5c"/></marker>
+          <marker id="arr-dash-rev" markerWidth="8" markerHeight="8" refX="2" refY="3" orient="auto"><path d="M8,0 L8,6 L0,3 z" fill="#3a3a5c"/></marker>
+        </defs>
+        <rect width="760" height="420" fill="#fafcfc"/>
+
+        <!-- Top-left: Social Media Exposure (green) -->
+        <rect x="30" y="50" width="290" height="150" rx="14" fill="#d6ecd4" stroke="#5a9a56" stroke-width="1.5"/>
+        <text x="175" y="76" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a3a18">Social Media Exposure</text>
+        <text x="55" y="100" font-size="9" fill="#1a3a18">•  Platform algorithm</text>
+        <text x="55" y="116" font-size="9" fill="#1a3a18">•  Trending formats (often implicit,</text>
+        <text x="65" y="129" font-size="9" fill="#1a3a18">informal user-generated content)</text>
+        <text x="55" y="145" font-size="9" fill="#1a3a18">•  Relatable youth-alike influencers and peers</text>
+        <text x="55" y="161" font-size="9" fill="#1a3a18">•  Repeated/frequent encounters</text>
+
+        <!-- Top-right: Changes in perception (salmon) -->
+        <rect x="440" y="50" width="290" height="150" rx="14" fill="#f5d5c8" stroke="#c06040" stroke-width="1.5"/>
+        <text x="585" y="72" text-anchor="middle" font-size="11" font-weight="bold" fill="#3a1a0a">Changes in Perception of</text>
+        <text x="585" y="86" text-anchor="middle" font-size="11" font-weight="bold" fill="#3a1a0a">ONP Use Norms</text>
+        <text x="585" y="100" text-anchor="middle" font-size="9" fill="#5a2a10">(Cultivation Theory &amp; SCT)</text>
+        <text x="460" y="122" font-size="9" fill="#3a1a0a">•  Absorbing potential ONP-related</text>
+        <text x="470" y="135" font-size="9" fill="#3a1a0a">misinformation (Cultivation Theory &amp; E-ELM)</text>
+        <text x="460" y="151" font-size="9" fill="#3a1a0a">•  Decreased counterarguing to anti-ONP</text>
+        <text x="470" y="164" font-size="9" fill="#3a1a0a">use messages (E-ELM)</text>
+        <text x="460" y="180" font-size="9" fill="#3a1a0a">•  Decreased perceived health consequences</text>
+
+        <!-- Bottom-left: Narrative Engagement (blue) -->
+        <rect x="30" y="260" width="290" height="150" rx="14" fill="#cce0f5" stroke="#3a70aa" stroke-width="1.5"/>
+        <text x="175" y="284" text-anchor="middle" font-size="11" font-weight="bold" fill="#0a2a4a">Narrative Engagement</text>
+        <text x="55" y="308" font-size="9" fill="#0a2a4a">•  Attention to ONP-related content</text>
+        <text x="55" y="324" font-size="9" fill="#0a2a4a">•  Enjoyment of youth-appealing cues</text>
+        <text x="55" y="340" font-size="9" fill="#0a2a4a">•  Transportation into the narrative</text>
+        <text x="55" y="356" font-size="9" fill="#0a2a4a">•  Identification with youth-alike influencers</text>
+        <text x="65" y="369" font-size="9" fill="#0a2a4a">and peers (E-ELM &amp; SCT)</text>
+
+        <!-- Bottom-right: Observational Learning (purple) -->
+        <rect x="440" y="260" width="290" height="150" rx="14" fill="#ddd0f0" stroke="#6a40aa" stroke-width="1.5"/>
+        <text x="585" y="284" text-anchor="middle" font-size="11" font-weight="bold" fill="#2a0a4a">Observational Learning and</text>
+        <text x="585" y="298" text-anchor="middle" font-size="11" font-weight="bold" fill="#2a0a4a">Social Modeling of</text>
+        <text x="585" y="312" text-anchor="middle" font-size="11" font-weight="bold" fill="#2a0a4a">ONP-Related Behavior (SCT)</text>
+        <text x="460" y="336" font-size="9" fill="#2a0a4a">•  Liking, sharing, or commenting content</text>
+        <text x="470" y="349" font-size="9" fill="#2a0a4a">associated with ONP use</text>
+        <text x="460" y="365" font-size="9" fill="#2a0a4a">•  Intention to initiate ONP use</text>
+        <text x="460" y="381" font-size="9" fill="#2a0a4a">•  Intention to recommend others try ONPs</text>
+
+        <!-- Arrow: top-left → top-right (Cultivation Effect, solid) -->
+        <line x1="322" y1="125" x2="436" y2="125" stroke="#3a3a5c" stroke-width="2" marker-end="url(#arr-solid)"/>
+        <text x="380" y="118" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#3a3a5c">Cultivation Effect</text>
+
+        <!-- Arrow: top-left → bottom-left (solid) -->
+        <line x1="175" y1="202" x2="175" y2="256" stroke="#3a3a5c" stroke-width="2" marker-end="url(#arr-solid)"/>
+
+        <!-- Arrow: top-right → bottom-right (solid) -->
+        <line x1="585" y1="202" x2="585" y2="256" stroke="#3a3a5c" stroke-width="2" marker-end="url(#arr-solid)"/>
+
+        <!-- Arrow: bottom-left → bottom-right (solid) -->
+        <line x1="322" y1="335" x2="436" y2="335" stroke="#3a3a5c" stroke-width="2" marker-end="url(#arr-solid)"/>
+
+        <!-- Dashed: orange (top-right) → blue (bottom-left) -->
+        <line x1="444" y1="205" x2="325" y2="263" stroke="#3a3a5c" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#arr-dash)"/>
+        <!-- Solid: blue (bottom-left) → orange (top-right) -->
+        <line x1="316" y1="257" x2="436" y2="197" stroke="#3a3a5c" stroke-width="1.5" marker-end="url(#arr-solid)"/>
+      </svg>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  Julia (Pengyue) Dou · PhD Candidate, Behavioral &amp; Community Health Sciences · University of Pittsburgh<br/>
+  <a href="mailto:PED44@pitt.edu" style="color:rgba(255,255,255,0.7)">PED44@pitt.edu</a>
+</footer>
+
+</body>
+</html>
