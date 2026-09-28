@@ -48,7 +48,7 @@
       text-align: center;
     }
     .hero h1 { font-size: 2rem; font-weight: normal; margin-bottom: 0.75rem; }
-    .hero p { font-size: 1.05rem; opacity: 0.88; max-width: 680px; margin: 0 auto 1.5rem; font-family: sans-serif; }
+    .hero p { font-size: 1.05rem; color: #fff; opacity: 0.9; max-width: 680px; margin: 0 auto 1.5rem; font-family: sans-serif; }
     .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
     .hero-tags span {
       background: rgba(255,255,255,0.15);
@@ -121,7 +121,7 @@
       padding-top: 2px;
     }
     .step-content { flex: 1; }
-    .step-content strong { display: block; font-family: sans-serif; font-size: 0.9rem; color: var(--text); margin-bottom: 0.25rem; }
+    .step-content > strong { display: block; font-family: sans-serif; font-size: 0.9rem; color: var(--text); margin-bottom: 0.25rem; }
     .step-content p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
 
     /* ── Findings ── */
@@ -278,17 +278,12 @@
 
 <!-- Navigation -->
 <nav>
-  <a class="name" href="#">Julia (Pengyue) Dou</a>
-  <div class="links">
-    <a href="#">Home</a>
-    <a href="#">Research</a>
-    <a href="mailto:PED44@pitt.edu">Contact</a>
-  </div>
+  <span class="name" style="color:#fff;font-family:sans-serif;">Julia (Pengyue) Dou</span>
 </nav>
 
 <!-- Hero -->
 <div class="hero">
-  <h1>Translating Public Health Research into UX Research Practice</h1>
+  <h1>Understanding How People Interpret, Trust, and Act on What They See in Digital Spaces</h1>
   <p>Mixed-methods health researcher specializing in social media content analysis, behavioral theory-grounded qualitative research, and evidence-based insight synthesis across health conditions, platforms, and populations.</p>
   <div class="hero-tags">
     <span>Mixed Methods Research</span>
@@ -321,8 +316,10 @@
     </div>
 
     <h3>Background &amp; Research Question</h3>
-    <p><em>The Pitt</em> (HBO, 2025) featured a medically accurate organ donation storyline developed in consultation with the Center for Organ Recovery &amp; Education (CORE). Prior survey research showed that viewers were more likely to seek out (26.9% vs. 9.2%) and share (17.2% vs. 5.3%) organ donation information compared to non-viewers, but did not tell us <strong>what</strong> viewers were actually discussing or how they interpreted the storyline.</p>
-    <p><strong>Research question:</strong> How did Reddit viewers engage with the organ donation storyline: what did they say, what patterns emerged, and what does this mean for health communicators and organ procurement organizations (OPOs)?</p>
+    <p><em>The Pitt</em> (HBO, 2025) featured a medically accurate organ donation storyline developed in consultation with the Center for Organ Recovery &amp; Education (CORE).</p>
+    <p><strong>Starting point:</strong> In October 2025, the USC Annenberg Norman Lear Center published a survey of viewers and non-viewers assessing whether the show&rsquo;s health storylines shifted audience attitudes and behaviors. Viewers were more likely than non-viewers to seek out (26.9% vs. 9.2%) and share (17.2% vs. 5.3%) organ donation information, and viewers who were more transported into the narrative reported more positive attitudes toward donation. The survey established <em>that</em> the storyline was associated with action and hinted that narrative engagement mattered, but its closed-ended items could not show <em>what about the story</em> moved people, in their own words. Our team did not conduct this survey; we used its published findings as the starting point for this study.</p>
+    <p><strong>Why look at emotional response?</strong> The survey&rsquo;s transportation finding and entertainment-education theory, particularly the Extended Elaboration Likelihood Model (E-ELM), point to the same explanation: stories shift health behavior largely through how audiences respond to them. People act when they are emotionally engaged, see their own lives in the story, and find it realistic. If that holds, the survey&rsquo;s seek-and-share gap should be accompanied by visible emotional engagement, personal connection, and realism judgments in how viewers talk about the storyline. A survey cannot capture those responses in viewers&rsquo; own words; organic online conversation can.</p>
+    <p><strong>Research question:</strong> What emotional and interpretive responses did viewers have to a medically accurate organ donation storyline, and how might those responses help explain why viewers went on to seek and share donation information?</p>
 
     <h3>Why This Design?</h3>
     <p><strong>Why Reddit?</strong> 83% of TV viewers use a second screen while watching; Reddit is where this real-time discussion happens. r/ThePittTVShow offered a naturalistic, publicly accessible window into unfiltered viewer reactions. Reddit's threaded format allows for richer peer exchange than platforms like Twitter.</p>
@@ -348,7 +345,7 @@
         <div class="step-num">03</div>
         <div class="step-content">
           <strong>Calibration &amp; Inter-Rater Reliability</strong>
-          <p>6 human coders worked in 3 pairs, independently double-coding all posts. After each calibration round (n=1,200 posts), calculated <strong>Cohen's κ</strong> per code category, adjudicated disagreements, and refined codebook definitions. Repeated until <strong>κ ≥ 0.70</strong> was achieved (the accepted threshold for reliable qualitative coding).</p>
+          <p>6 human coders worked in 3 pairs, independently double-coding posts. Coders first coded each post for relevance to the organ donation storyline. Calibration ran in 2 rounds of 1,200 posts each; after each round, we calculated <strong>Cohen's κ</strong> per code category, adjudicated disagreements, and refined codebook definitions, reaching <strong>κ ≥ 0.70</strong> (the accepted threshold for reliable coding). Relevance screening identified 332 relevant posts out of 4,579, which were then coded for themes.</p>
         </div>
       </div>
       <div class="step">
@@ -368,6 +365,7 @@
     </div>
 
     <h3>Key Findings</h3>
+    <p>Viewers responded to the storyline less as information and more as something personal. The findings point to emotional engagement and personal connection, reinforced by trusted healthcare voices, as plausible pathways behind the survey&rsquo;s seek-and-share gap.</p>
     <div class="findings-grid">
       <div class="finding">
         <div class="finding-num">Finding 01</div>
@@ -375,7 +373,7 @@
       </div>
       <div class="finding">
         <div class="finding-num">Finding 02</div>
-        <p><strong>Healthcare providers served as credibility anchors.</strong> Only 9% of posts, but 66.7% also included a personal connection to donation, and providers were twice as likely to discuss storyline realism (20.0% vs. 7.8% overall). They translated storyline content into factual health information.</p>
+        <p><strong>Healthcare providers served as credibility anchors.</strong> Only 9% of posts, but 66.7% also included a personal connection to donation, and providers were twice as likely to discuss storyline realism (20.0% vs. 7.8% overall). They translated storyline content into factual health information, the kind of information sharing the survey measured.</p>
       </div>
       <div class="finding">
         <div class="finding-num">Finding 03</div>
@@ -383,7 +381,7 @@
       </div>
       <div class="finding">
         <div class="finding-num">Finding 04</div>
-        <p><strong>Trauma surfaces in entertainment spaces.</strong> Trauma-related content was disproportionately present in emotionally engaged (16.5%) and personally connected posts (13.3%), versus 7.8% overall. Fan communities function as informal peer support spaces for processing health-related loss.</p>
+        <p><strong>Emotional engagement opened space for sharing loss.</strong> Trauma-related content was disproportionately present in emotionally engaged (16.5%) and personally connected posts (13.3%), versus 7.8% overall. The storyline gave viewers a reason to share their own experiences with loss and transplant, turning the fan community into an informal peer-support space and another route from emotional response to talking about donation with others.</p>
       </div>
     </div>
 
@@ -396,8 +394,11 @@
       <cite>Viewer with personal connection, r/ThePittTVShow</cite>
     </blockquote>
 
+    <h3>Connecting Back to the Survey</h3>
+    <p>The survey showed that viewers acted; this study suggests why. Emotional engagement and personal connection gave viewers a reason to talk about donation, realistic portrayal made the storyline credible, and healthcare providers turned that emotion into accurate information others could act on. Because this is an observational content analysis, these are hypothesized pathways rather than causal evidence. A natural next step is a survey that measures emotional engagement, identification, and perceived realism directly and tests whether they explain differences in information seeking and sharing.</p>
+
     <h3>Implications for Stakeholders</h3>
-    <p>For OPOs and health communicators: realistic entertainment portrayals can prompt emotional reflection and peer knowledge exchange without direct messaging campaigns. Healthcare providers are a key intermediary audience. Fan communities like Reddit may be an underutilized channel for organic donor education and registration prompts. Trauma-informed communication strategies are needed when engaging audiences around donation.</p>
+    <p>For OPOs and health communicators: if emotional engagement, personal connection, and perceived realism are the pathways from watching to acting, then accurate, expert-informed stories may move audiences in ways information campaigns alone cannot. Investing in realism, as CORE did by consulting on the storyline, is worth the effort. Healthcare providers are a key intermediary audience because they convert emotional reactions into accurate information, so equipping them to join these conversations extends a storyline&rsquo;s reach. Fan communities like Reddit may be an underutilized channel for organic donor education and registration prompts while emotional engagement is high. Because these conversations also surface grief and trauma, outreach in these spaces should be trauma-informed.</p>
 
     <hr class="divider" />
 
